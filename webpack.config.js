@@ -1,11 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   mode: 'development',
   context: path.resolve(__dirname, 'src'),
   entry: {
-    // commons: ['bootstrap', './sass/main.scss'],
+    // commons: ['bulma', './styles/main.scss'],
     index: ['./js/index.js'],
     expences: ['./js/expences.js'],
     about: ['./js/about.js'],
@@ -69,6 +70,7 @@ module.exports = {
     ]
   },
   plugins: [
+    // new ExtractTextPlugin('css/mystyles.css'),
     new HtmlWebpackPlugin({
       title: 'Expence Tracker',
       filename: "index.html",
