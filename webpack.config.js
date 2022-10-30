@@ -1,25 +1,34 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-let htmlPageNames = ['about', 'expences'];
-let multipleHtmlPlugins = htmlPageNames.map(name => {
-  return new HtmlWebpackPlugin({
-    template: `./src/pages/${name}.html`,
-    filename: `${name}.html`,
-    chunks: [`${name}`]
-  })
-});
-
 module.exports = {
   mode: 'development',
+  context: path.resolve(__dirname, 'src'),
   entry: {
-    bundle: path.resolve(__dirname, 'src/index.js')
+    // commons: ['bootstrap', './sass/main.scss'],
+    index: ['./js/index.js'],
+    expences: ['./js/expences.js'],
+    about: ['./js/about.js'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name][contenthash].js',
     clean: true,
     assetModuleFilename: '[name][ext]'
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      maxAsyncRequests: Infinity,
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            return module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+          }
+        }
+      }
+    }
   },
   devtool: 'source-map',
   devServer: {
@@ -31,7 +40,7 @@ module.exports = {
     hot: true,
     compress: true,
     historyApiFallback: true,
-    watchFiles: ["src/*.html"],
+    watchFiles: ["src/pages/*.html"],
   },
   module: {
     rules: [
@@ -63,22 +72,35 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Expence Tracker',
       filename: "index.html",
-      template: "src/template.html",
+      template: "./pages/index.html",
       meta: {
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
       },
       optimize: {
         prefetch: true,
       },
+      chunks: ['index']
     }),
     new HtmlWebpackPlugin({
       filename: 'about.html',
-      template: 'src/pages/about.html',
+      template: './pages/about.html',
+      meta: {
+        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      },
+      optimize: {
+        prefetch: true,
+      },
       chunks: ['about']
     }),
     new HtmlWebpackPlugin({
       filename: 'expences.html',
-      template: 'src/pages/expences.html',
+      template: './pages/expences.html',
+      meta: {
+        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      },
+      optimize: {
+        prefetch: true,
+      },
       chunks: ['expences']
     })
   ]
