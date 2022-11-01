@@ -10,6 +10,8 @@ module.exports = {
     index: ['./js/index.js'],
     expences: ['./js/expences.js'],
     about: ['./js/about.js'],
+    register: ['./js/register.js'],
+    login: ['./js/login.js'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -104,6 +106,28 @@ module.exports = {
         prefetch: true,
       },
       chunks: ['expences']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'login.html',
+      template: './pages/login.html',
+      meta: {
+        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      },
+      optimize: {
+        prefetch: true,
+      },
+      chunks: ['login']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'register.html',
+      template: './pages/register.html',
+      meta: {
+        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      },
+      optimize: {
+        prefetch: true,
+      },
+      chunks: ['register']
     })
   ]
 }
