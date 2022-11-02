@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -72,7 +72,7 @@ module.exports = {
     ]
   },
   plugins: [
-    // new ExtractTextPlugin('css/mystyles.css'),
+    // new ESLintPlugin(),
     new HtmlWebpackPlugin({
       title: 'Expence Tracker',
       filename: "index.html",
