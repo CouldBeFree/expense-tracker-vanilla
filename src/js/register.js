@@ -12,60 +12,55 @@ import register from '../styles/pages/register.scss'
       return Object.entries(this.opts);
     }
 
-    validateRequired(selector) {
-      if (!selector.value.length) {
-        selector.classList.add('is-danger');
-        const wrapper = selector.parentNode;
-        if (wrapper.nextElementSibling) {
-          return false;
-        }
-        const html = "<p class=\"help is-danger\">This field is required</p>";
-        wrapper.insertAdjacentHTML("afterend", html);
+    removeValidationMessage(node) {
+      if (!node.classList.contains('is-danger')) return;
+      node.classList.remove('is-danger');
+      const wrapper = node.parentNode;
+      const sibling = wrapper.nextElementSibling;
+      sibling.remove();
+    }
+
+    renderValidationMessage(node, msg) {
+      node.classList.add('is-danger');
+      const wrapper = node.parentNode;
+      if (wrapper.nextElementSibling) {
         return false;
-      } else if (selector.classList.contains('is-danger')) {
-        selector.classList.remove('is-danger');
-        const wrapper = selector.parentNode;
-        const node = wrapper.nextElementSibling;
-        node.remove();
-        return true;
-      } else {
-        return true;
       }
-    }
-
-    validateMinLength(selector, opts) {
-      return true;
-    }
-
-    validateMaxLength(selector, opts) {
-      return true;
+      const html = `<p class=\"help is-danger\">${msg}</p>`;
+      wrapper.insertAdjacentHTML("afterend", html);
     }
 
     validateInput(selector, opts) {
-      let isValid = false;
-      for (const option in opts) {
-        switch(option){
-          case 'required':
-            isValid = this.validateRequired(selector, opts);
-            break;
-          case 'minLength':
-            isValid = this.validateMinLength(selector, opts);
-            break;
-          case 'maxLength':
-            isValid = this.validateMaxLength(selector, opts);
-            break;
-        }
+      const { required, minLength, maxLength } = opts;
+      let isValid = true;
+
+      this.removeValidationMessage(selector);
+      if (required && !selector.value.length) {
+        this.renderValidationMessage(selector, 'This field is required');
+        isValid = false;
       }
+
+      if (minLength > selector.value.length) {
+        this.renderValidationMessage(selector, `Minimal length should be ${minLength} characters`);
+        isValid = false;
+      }
+
+      if (maxLength < selector.value.length) {
+        this.renderValidationMessage(selector, `Maximal length should be ${maxLength} characters`);
+        isValid = false;
+      }
+
       return isValid;
     }
 
     validate() {
-      let isValid = false;
+      let isValid = true;
       this.options.forEach((opt) => {
         const itemName = opt[0];
         const validationOptions = opt[1];
         const inputItem = this.form.querySelector(`[data-name=${itemName}]`);
-        isValid = this.validateInput(inputItem, validationOptions);
+        const isValidInput = this.validateInput(inputItem, validationOptions);
+        if (!isValidInput) isValid = false;
       });
       return isValid;
     }
@@ -86,6 +81,11 @@ import register from '../styles/pages/register.scss'
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(formValidator.validate());
+    const isValidForm = formValidator.validate();
+    if (isValidForm) {
+      alert('Form valid')
+    } else {
+      alert('Form invalid')
+    }
   });
 })()

@@ -8,7 +8,7 @@ module.exports = {
   entry: {
     // commons: ['bulma', './styles/main.scss'],
     index: ['./js/index.js'],
-    expences: ['./js/expences.js'],
+    expences: ['./js/expenses.js'],
     about: ['./js/about.js'],
     register: ['./js/register.js'],
     login: ['./js/login.js'],
@@ -74,7 +74,7 @@ module.exports = {
   plugins: [
     // new ESLintPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Expence Tracker',
+      title: 'Expense Tracker',
       filename: "index.html",
       template: "./pages/index.html",
       meta: {
@@ -97,8 +97,8 @@ module.exports = {
       chunks: ['about']
     }),
     new HtmlWebpackPlugin({
-      filename: 'expences.html',
-      template: './pages/expences.html',
+      filename: 'expenses.html',
+      template: './pages/expenses.html',
       meta: {
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
       },
@@ -119,6 +119,7 @@ module.exports = {
       chunks: ['login']
     }),
     new HtmlWebpackPlugin({
+      title: 'Expense Tracker | Register',
       filename: 'register.html',
       template: './pages/register.html',
       meta: {
