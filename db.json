@@ -1,25 +1,25 @@
 {
   "users": [
     {
-      "name": "Jonas",
-      "surname": "T."
+      "email": "qwe@gmail.com",
+      "password": "12345678",
+      "id": "44fb1a8744863"
     },
     {
-      "name": "Chris",
-      "surname": "B."
+      "email": "qeeeewe@gmail.com",
+      "password": "12345678",
+      "id": "f7151414d2227"
     },
     {
-      "name": "Juliana",
-      "surname": "Crain"
+      "email": "qe1qwe@gmail.com",
+      "password": "12345678",
+      "id": "c5083b0d75e2"
     },
     {
-      "name": "Caty",
-      "surname": "B."
-    },
-    {
-      "name": "Caddty",
-      "surname": "WB.",
-      "id": "21231"
+      "email": "qwvfdsdfe@gmail.com",
+      "password": "12345678",
+      "name": "aqwd",
+      "id": "038c8cb00114c"
     }
   ]
 }

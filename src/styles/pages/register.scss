@@ -3,6 +3,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+
+  & .top-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    & p {
+      margin-right: 10px;
+    }
+  }
 
   & .register-form {
     max-width: 380px;
