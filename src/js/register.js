@@ -2,8 +2,6 @@
 import register from '../styles/pages/register.scss';
 import FormValidator from './utils/formValidator';
 
-// TODO: Clear all fields if user successfully registered
-
 (function () {
   const form = document.querySelector('#form');
 

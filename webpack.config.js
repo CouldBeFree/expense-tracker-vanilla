@@ -74,7 +74,7 @@ module.exports = {
   plugins: [
     // new ESLintPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Expense Tracker',
+      title: 'Expense Tracker | Home',
       filename: "index.html",
       template: "./pages/index.html",
       meta: {
@@ -86,6 +86,7 @@ module.exports = {
       chunks: ['index']
     }),
     new HtmlWebpackPlugin({
+      title: 'Expense Tracker | About',
       filename: 'about.html',
       template: './pages/about.html',
       meta: {
@@ -97,6 +98,7 @@ module.exports = {
       chunks: ['about']
     }),
     new HtmlWebpackPlugin({
+      title: 'Expense Tracker | Expenses',
       filename: 'expenses.html',
       template: './pages/expenses.html',
       meta: {
@@ -108,6 +110,7 @@ module.exports = {
       chunks: ['expences']
     }),
     new HtmlWebpackPlugin({
+      title: 'Expense Tracker | Login',
       filename: 'login.html',
       template: './pages/login.html',
       meta: {
