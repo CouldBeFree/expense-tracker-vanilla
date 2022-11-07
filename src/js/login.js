@@ -1,7 +1,11 @@
 import login from '../styles/pages/login.scss';
 import FormValidator from './utils/formValidator';
+import HandleClosedRoutes from "./utils/handleClosedRoutes";
+
+const handleClosedRoutes = new HandleClosedRoutes(window.location.pathname);
 
 (function () {
+  handleClosedRoutes.handlePublic();
   const form = document.querySelector('#form');
   const formValidator = new FormValidator(form, {
     'email': {
@@ -40,6 +44,10 @@ import FormValidator from './utils/formValidator';
       renderErrorNotification('User not found', userExistsId, form);
     } else if (userFromDb.password !== password) {
       renderErrorNotification('Email or password incorrect', wrongPswdId, form);
+    } else {
+      const userDataStringified = JSON.stringify(userFromDb);
+      localStorage.setItem('expenseUser', userDataStringified);
+      window.location = '/index.html';
     }
   }
 
@@ -53,9 +61,6 @@ import FormValidator from './utils/formValidator';
         email: emailValue,
         password: passwordValue
       });
-      console.info('form valid');
-    } else {
-      console.info('form not valid');
     }
   });
 })();
