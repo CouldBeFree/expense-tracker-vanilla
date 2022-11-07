@@ -9,7 +9,6 @@ class HandleClosedRoutes {
       HOME: '/',
       CATEGORIES: '/categories.html'
     }
-    this.closedPages = ['/', '/categories'];
   }
 
   get isUserLoggedIn() {
@@ -25,7 +24,11 @@ class HandleClosedRoutes {
   }
 
   handleClosed() {
-
+    if (!this.isUserLoggedIn && (this.currentPage === this.closedPage.HOME || this.currentPage === this.closedPage.CATEGORIES)) {
+      return true;
+    } else {
+      window.location = '/';
+    }
   }
 }
 
