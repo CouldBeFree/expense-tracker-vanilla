@@ -4,3 +4,31 @@
 //  //background-color: red;
 //  //background: url('../../assets/resource/logo.png');
 //}
+
+.small-box {
+  border-radius: 5px;
+  background-color: #48c78e;
+  color: white;
+  font-weight: 600;
+
+  &__value {
+    font-size: 25px;
+    font-weight: 700;
+  }
+}
+
+.big-box {
+  border-radius: 5px;
+  background-color: #48c78e;
+  color: white;
+  font-weight: 600;
+
+  &__head {
+    font-size: 18px;
+    font-weight: 700;
+  }
+}
+
+.category-holder {
+
+}

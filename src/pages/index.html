@@ -4,6 +4,7 @@
    <meta charset="UTF-8">
    <title><%= htmlWebpackPlugin.options.title %></title>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+   <script src="https://kit.fontawesome.com/36d2fbf852.js" crossorigin="anonymous"></script>
 </head>
 <body>
    <div class="container">
@@ -12,10 +13,6 @@
             <a class="navbar-item" href="https://bulma.io" id="logo-holder">
                <img id="logo" src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
             </a>
-<!--            <div id="logo-holder">-->
-
-<!--            </div>-->
-
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                <span aria-hidden="true"></span>
                <span aria-hidden="true"></span>
@@ -46,6 +43,62 @@
             </div>
          </div>
       </nav>
+      <div class="columns mt-6">
+         <div class="column"></div>
+         <div class="column is-10">
+            <div class="columns">
+               <div class="column">
+                  <div class="small-box has-text-centered">
+                     <p class="small-box__head">Total Income</p>
+                     <p class="small-box__value">$10,000</p>
+                  </div>
+               </div>
+               <div class="column">
+                  <div class="small-box has-text-centered">
+                     <p class="small-box__head">Total Expense</p>
+                     <p class="small-box__value">$2,350</p>
+                  </div>
+               </div>
+               <div class="column">
+                  <div class="small-box has-text-centered">
+                     <p class="small-box__head">Balance</p>
+                     <p class="small-box__value">$2,350</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="column"></div>
+      </div>
+      <div class="columns">
+         <div class="column"></div>
+         <div class="column is-10">
+            <div class="columns">
+               <div class="column">
+                  <div class="big-box has-text-centered p-4">
+                     <p class="big-box__head">Expense By Category</p>
+                     <div class="category-holder">
+                        <p>
+                           <span class="icon is-small">
+                              <i class="fa-solid fa-plane"></i>
+                           </span>Travel</p>
+                        <p><span class="icon is-small"><i class="fa-solid fa-notes-medical"></i></span>Health Care</p>
+                        <p><span class="icon is-small"><i class="fa-solid fa-shirt"></i></span>Garments</p>
+                        <p><span class="icon is-small"><i class="fa-solid fa-cart-shopping"></i></span>Grocery</p>
+                        <p><span class="icon is-small"><i class="fa-solid fa-burger"></i></span>Eating Outside</p>
+                        <p><span class="icon is-small"><i class="fa-solid fa-cake-candles"></i></span>Entertainments</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="column is-8">
+                  <div class="small-box has-text-centered">
+                     <p class="small-box__head">Total Expense</p>
+                     <p class="small-box__value">$2,350</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="column"></div>
+      </div>
    </div>
 </body>
 </html>
