@@ -73,26 +73,49 @@
          <div class="column"></div>
          <div class="column is-10">
             <div class="columns">
-               <div class="column">
+               <div class="column is-4">
                   <div class="big-box has-text-centered p-4">
                      <p class="big-box__head">Expense By Category</p>
-                     <div class="category-holder">
-                        <p>
-                           <span class="icon is-small">
-                              <i class="fa-solid fa-plane"></i>
-                           </span>Travel</p>
-                        <p><span class="icon is-small"><i class="fa-solid fa-notes-medical"></i></span>Health Care</p>
-                        <p><span class="icon is-small"><i class="fa-solid fa-shirt"></i></span>Garments</p>
-                        <p><span class="icon is-small"><i class="fa-solid fa-cart-shopping"></i></span>Grocery</p>
-                        <p><span class="icon is-small"><i class="fa-solid fa-burger"></i></span>Eating Outside</p>
-                        <p><span class="icon is-small"><i class="fa-solid fa-cake-candles"></i></span>Entertainments</p>
-                     </div>
+<!--                     <div class="category-holder is-justify-content-space-around mt-3 is-flex is-flex-wrap-wrap">-->
+<!--                        <p class="mb-1 mgb-small"><span class="icon is-small pr-3"><i class="fa-solid fa-plane"></i></span>Travel</p>-->
+<!--                        <p class="mb-1 mgb-small"><span class="icon is-small pr-3"><i class="fa-solid fa-notes-medical"></i></span>Health Care</p>-->
+<!--                        <p class="mb-1 mgb-small"><span class="icon is-small pr-3"><i class="fa-solid fa-shirt"></i></span>Garments</p>-->
+<!--                        <p class="mb-1 mgb-small"><span class="icon is-small pr-3"><i class="fa-solid fa-cart-shopping"></i></span>Grocery</p>-->
+<!--                        <p class="mb-1 mgb-small"><span class="icon is-small pr-3"><i class="fa-solid fa-burger"></i></span>Eating Outside</p>-->
+<!--                        <p class="mb-1 mgb-small"><span class="icon is-small pr-3"><i class="fa-solid fa-cake-candles"></i></span>Entertainments</p>-->
+<!--                     </div>-->
+                     <canvas id="myChart" width="400" height="400"></canvas>
                   </div>
                </div>
                <div class="column is-8">
                   <div class="small-box has-text-centered">
-                     <p class="small-box__head">Total Expense</p>
-                     <p class="small-box__value">$2,350</p>
+                     <p class="small-box__head">Recent Transactions</p>
+                     <table class="table">
+                        <thead>
+                        <tr>
+                           <th><abbr title="Position">Category</abbr></th>
+                           <th>Date</th>
+                           <th><abbr title="Played">Amount</abbr></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td>Travel</td>
+                              <td>Jul-20-22</td>
+                              <td>-500$</td>
+                           </tr>
+                           <tr>
+                              <td>Grocery</td>
+                              <td>Jul-20-22</td>
+                              <td>-300$</td>
+                           </tr>
+                           <tr>
+                              <td>Grocery</td>
+                              <td>Jul-20-22</td>
+                              <td>-450$</td>
+                           </tr>
+                        </tbody>
+                     </table>
                   </div>
                </div>
             </div>
