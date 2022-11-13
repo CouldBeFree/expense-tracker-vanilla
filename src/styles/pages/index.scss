@@ -29,6 +29,32 @@
   }
 }
 
+.small-box {
+  &__head {
+    font-size: 18px;
+    font-weight: 700;
+  }
+}
+
+.box-table {
+  background-color: transparent;
+  color: white;
+
+  th {
+    color: white !important;
+    text-align: center !important;
+    border-bottom: 1px solid black !important;
+  }
+
+  td {
+    //border-bottom: 1px solid black !important;
+
+    &:not(.last) {
+      border-bottom: 1px solid black !important;
+    }
+  }
+}
+
 .category-holder {
 
 }
