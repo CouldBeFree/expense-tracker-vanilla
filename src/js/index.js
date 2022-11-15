@@ -1,5 +1,3 @@
-// import handleClosedRoutes from "./utils/handleClosedRoutes";
-// handleClosedRoutes();
 import index from '../styles/pages/index.scss';
 import { logout, renderLogo } from "./utils/general";
 import Chart from 'chart.js/auto';
