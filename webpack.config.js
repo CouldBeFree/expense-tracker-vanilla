@@ -8,7 +8,8 @@ module.exports = {
   entry: {
     // commons: ['bulma', './styles/main.scss'],
     index: ['./js/index.js'],
-    expences: ['./js/expenses.js'],
+    categories: ['./js/categories.js'],
+    transactions: ['./js/transactions.js'],
     about: ['./js/about.js'],
     register: ['./js/register.js'],
     login: ['./js/login.js'],
@@ -98,16 +99,16 @@ module.exports = {
       chunks: ['about']
     }),
     new HtmlWebpackPlugin({
-      title: 'Expense Tracker | Expenses',
-      filename: 'expenses.html',
-      template: './pages/expenses.html',
+      title: 'Expense Tracker | Categories',
+      filename: 'categories.html',
+      template: './pages/categories.html',
       meta: {
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
       },
       optimize: {
         prefetch: true,
       },
-      chunks: ['expences']
+      chunks: ['categories']
     }),
     new HtmlWebpackPlugin({
       title: 'Expense Tracker | Login',
@@ -132,6 +133,18 @@ module.exports = {
         prefetch: true,
       },
       chunks: ['register']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Expense Tracker | Transactions',
+      filename: 'transactions.html',
+      template: './pages/transactions.html',
+      meta: {
+        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+      },
+      optimize: {
+        prefetch: true,
+      },
+      chunks: ['transactions']
     })
   ]
 }
