@@ -9,9 +9,10 @@ import categories from '../styles/pages/categories.scss';
       this.closeRemoveModal = document.querySelectorAll('.delete');
       this.modalBackground = document.querySelectorAll('.modal-background');
       this.editModal = document.querySelector('#edit-modal');
+      this.addNewCategory = document.querySelector('#add-category');
     }
 
-    addHandlerForRemove() {
+    addEventHandler() {
       this.removeButtons.forEach(el => {
         el.addEventListener('click', () => {
           this.removePopup.classList.add('is-active');
@@ -34,10 +35,13 @@ import categories from '../styles/pages/categories.scss';
           this.editModal.classList.remove('is-active');
         });
       });
+      this.addNewCategory.addEventListener('click', () => {
+        this.editModal.classList.add('is-active');
+      });
     }
 
     init() {
-      this.addHandlerForRemove();
+      this.addEventHandler();
     }
   }
 

@@ -1,1 +1,1 @@
-alert('transactions');
+import categories from '../styles/pages/transactions.scss';
