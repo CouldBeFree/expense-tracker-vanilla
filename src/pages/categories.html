@@ -58,13 +58,13 @@
                   <h1 class="is-size-4">Categories</h1>
                   <button class="button is-primary">New Category</button>
                </div>
-               <div class="mt-3">
+               <div class="mt-5">
                   <table class="table">
                      <thead>
                         <tr>
-                           <th>Category</th>
-                           <th>Type</th>
-                           <th>Actions</th>
+                           <th class="has-text-centered">Category</th>
+                           <th class="has-text-centered">Type</th>
+                           <th class="has-text-centered">Actions</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -72,12 +72,12 @@
                            <td>Grocery</td>
                            <td>Expense</td>
                            <td>
-                              <button class="common-button">
+                              <button class="common-button remove">
                                  <span class="icon is-small">
                                     <i class="fa-solid fa-trash"></i>
                                  </span>
                               </button>
-                              <button class="common-button">
+                              <button class="common-button edit">
                                  <span class="icon is-small">
                                     <i class="fa-solid fa-pen"></i>
                                  </span>
@@ -88,12 +88,12 @@
                            <td>Health Care</td>
                            <td>Expense</td>
                            <td>
-                              <button class="common-button">
+                              <button class="common-button remove">
                                  <span class="icon is-small">
                                     <i class="fa-solid fa-trash"></i>
                                  </span>
                               </button>
-                              <button class="common-button">
+                              <button class="common-button edit">
                                  <span class="icon is-small">
                                     <i class="fa-solid fa-pen"></i>
                                  </span>
@@ -104,12 +104,12 @@
                            <td>Open Balance</td>
                            <td>Income</td>
                            <td>
-                              <button class="common-button">
+                              <button class="common-button remove">
                                  <span class="icon is-small">
                                     <i class="fa-solid fa-trash"></i>
                                  </span>
                               </button>
-                              <button class="common-button">
+                              <button class="common-button edit">
                                  <span class="icon is-small">
                                     <i class="fa-solid fa-pen"></i>
                                  </span>
@@ -120,12 +120,12 @@
                            <td>Education</td>
                            <td>Expense</td>
                            <td>
-                              <button class="common-button">
+                              <button class="common-button remove">
                                  <span class="icon is-small">
                                     <i class="fa-solid fa-trash"></i>
                                  </span>
                               </button>
-                              <button class="common-button">
+                              <button class="common-button edit">
                                  <span class="icon is-small">
                                     <i class="fa-solid fa-pen"></i>
                                  </span>
@@ -136,12 +136,12 @@
                            <td>Commission</td>
                            <td>Income</td>
                            <td>
-                              <button class="common-button">
+                              <button class="common-button remove">
                                  <span class="icon is-small">
                                     <i class="fa-solid fa-trash"></i>
                                  </span>
                               </button>
-                              <button class="common-button">
+                              <button class="common-button edit">
                                  <span class="icon is-small">
                                     <i class="fa-solid fa-pen"></i>
                                  </span>
@@ -156,6 +156,51 @@
          </div>
       </div>
       <div class="column"></div>
+   </div>
+   <div id="remove-modal" class="modal">
+      <div class="modal-background"></div>
+
+      <div class="modal-card">
+         <header class="modal-card-head">
+            <p class="modal-card-title">Are you sure you want to remove?</p>
+            <button class="delete" aria-label="close"></button>
+         </header>
+         <footer class="modal-card-foot">
+            <button class="button is-success">Yes</button>
+            <button class="button">Cancel</button>
+         </footer>
+      </div>
+   </div>
+   <div id="edit-modal" class="modal">
+      <div class="modal-background"></div>
+
+      <div class="modal-card">
+         <header class="modal-card-head">
+            <p class="modal-card-title">Are you sure you want to remove?</p>
+            <button class="delete" aria-label="close"></button>
+         </header>
+         <section class="modal-card-body">
+            <p>
+               <input class="input" type="text" placeholder="Text input" value="Grocery">
+            </p>
+            <p class="mt-3">
+               <div class="control">
+                  <label class="radio">
+                     <input type="radio" name="type">
+                     Expense
+                  </label>
+                  <label class="radio">
+                     <input type="radio" name="type" checked>
+                     Income
+                  </label>
+               </div>
+            </p>
+         </section>
+         <footer class="modal-card-foot">
+            <button class="button is-success">Save</button>
+            <button class="button">Cancel</button>
+         </footer>
+      </div>
    </div>
 </div>
 </body>

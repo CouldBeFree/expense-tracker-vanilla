@@ -4,4 +4,20 @@
     background: transparent;
     cursor: pointer;
   }
+
+  & .table {
+    width: 100%;
+  }
+
+  #remove-modal {
+    & .modal-card {
+      width: 500px;
+    }
+  }
+
+  #edit-modal {
+    & .modal-card {
+      width: 450px !important;
+    }
+  }
 }
