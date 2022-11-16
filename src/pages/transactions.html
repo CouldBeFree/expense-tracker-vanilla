@@ -7,7 +7,7 @@
    <script src="https://kit.fontawesome.com/36d2fbf852.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container expenses">
+<div class="container transactions">
    <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
          <a class="navbar-item" href="https://bulma.io" id="logo-holder">
@@ -36,7 +36,7 @@
             </a>
 
             <a href="transactions.html" class="navbar-item">
-               Expenses
+               Transactions
             </a>
 
          </div>
@@ -52,7 +52,200 @@
          </div>
       </div>
    </nav>
-   <h1 class="is-size-1">Transaction</h1>
+   <div class="columns mt-6">
+      <div class="column"></div>
+      <div class="column is-10">
+         <div class="columns">
+            <div class="column"></div>
+            <div class="column has-text-centered is-6">
+               <div class="is-flex is-align-items-center is-justify-content-space-between">
+                  <h1 class="is-size-4">Transactions</h1>
+                  <button class="button is-primary" id="add-category">New Transaction</button>
+               </div>
+               <div class="mt-5">
+                  <table class="table">
+                     <thead>
+                     <tr>
+                        <th class="has-text-centered">Category</th>
+                        <th class="has-text-centered">Date</th>
+                        <th class="has-text-centered">Amount</th>
+                        <th class="has-text-centered">Actions</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     <tr>
+                        <td>Grocery</td>
+                        <td>Jan-01-22</td>
+                        <td>-400$</td>
+                        <td>
+                           <button class="common-button remove">
+                                 <span class="icon is-small">
+                                    <i class="fa-solid fa-trash"></i>
+                                 </span>
+                           </button>
+                           <button class="common-button edit">
+                                 <span class="icon is-small">
+                                    <i class="fa-solid fa-pen"></i>
+                                 </span>
+                           </button>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Grocery</td>
+                        <td>Jan-14-22</td>
+                        <td>-100$</td>
+                        <td>
+                           <button class="common-button remove">
+                                 <span class="icon is-small">
+                                    <i class="fa-solid fa-trash"></i>
+                                 </span>
+                           </button>
+                           <button class="common-button edit">
+                                 <span class="icon is-small">
+                                    <i class="fa-solid fa-pen"></i>
+                                 </span>
+                           </button>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Grocery</td>
+                        <td>Jul-19-22</td>
+                        <td>-222$</td>
+                        <td>
+                           <button class="common-button remove">
+                                 <span class="icon is-small">
+                                    <i class="fa-solid fa-trash"></i>
+                                 </span>
+                           </button>
+                           <button class="common-button edit">
+                                 <span class="icon is-small">
+                                    <i class="fa-solid fa-pen"></i>
+                                 </span>
+                           </button>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Grocery</td>
+                        <td>Jan-01-22</td>
+                        <td>-400$</td>
+                        <td>
+                           <button class="common-button remove">
+                                 <span class="icon is-small">
+                                    <i class="fa-solid fa-trash"></i>
+                                 </span>
+                           </button>
+                           <button class="common-button edit">
+                                 <span class="icon is-small">
+                                    <i class="fa-solid fa-pen"></i>
+                                 </span>
+                           </button>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>Grocery</td>
+                        <td>Jan-01-22</td>
+                        <td>-400$</td>
+                        <td>
+                           <button class="common-button remove">
+                                 <span class="icon is-small">
+                                    <i class="fa-solid fa-trash"></i>
+                                 </span>
+                           </button>
+                           <button class="common-button edit">
+                                 <span class="icon is-small">
+                                    <i class="fa-solid fa-pen"></i>
+                                 </span>
+                           </button>
+                        </td>
+                     </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <div class="column"></div>
+         </div>
+      </div>
+      <div class="column"></div>
+   </div>
+   <div id="remove-modal" class="modal">
+      <div class="modal-background"></div>
+
+      <div class="modal-card">
+         <header class="modal-card-head">
+            <p class="modal-card-title">Are you sure you want to remove?</p>
+            <button class="delete" aria-label="close"></button>
+         </header>
+         <footer class="modal-card-foot">
+            <button class="button is-success">Yes</button>
+            <button class="button">Cancel</button>
+         </footer>
+      </div>
+   </div>
+   <div id="edit-modal" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+         <header class="modal-card-head">
+            <p class="modal-card-title">Are you sure you want to remove?</p>
+            <button class="delete" aria-label="close"></button>
+         </header>
+         <section class="modal-card-body">
+            <div class="select">
+               <select>
+                  <option>Grocery</option>
+                  <option>Health Care</option>
+                  <option>Garments</option>
+                  <option>Eating Outside</option>
+               </select>
+            </div>
+            <p class="mt-3">
+            <div class="control">
+               <label class="radio">
+                  <input type="radio" name="type">
+                  Expense
+               </label>
+               <label class="radio">
+                  <input type="radio" name="type" checked>
+                  Income
+               </label>
+            </div>
+            </p>
+         </section>
+         <footer class="modal-card-foot">
+            <button class="button is-success">Save</button>
+            <button class="button">Cancel</button>
+         </footer>
+      </div>
+   </div>
+   <div id="add-modal" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+         <header class="modal-card-head">
+            <p class="modal-card-title">Are you sure you want to remove?</p>
+            <button class="delete" aria-label="close"></button>
+         </header>
+         <section class="modal-card-body">
+            <p>
+               <input class="input" type="text" placeholder="Text input">
+            </p>
+            <p class="mt-3">
+            <div class="control">
+               <label class="radio">
+                  <input type="radio" name="type" checked>
+                  Expense
+               </label>
+               <label class="radio">
+                  <input type="radio" name="type">
+                  Income
+               </label>
+            </div>
+            </p>
+         </section>
+         <footer class="modal-card-foot">
+            <button class="button is-success">Save</button>
+            <button class="button">Cancel</button>
+         </footer>
+      </div>
+   </div>
 </div>
 </body>
 </html>
