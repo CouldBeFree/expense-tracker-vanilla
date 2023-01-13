@@ -1,4 +1,5 @@
 import login from '../styles/pages/login.scss';
+import api from './utils/axios';
 import FormValidator from './utils/formValidator';
 import HandleClosedRoutes from "./utils/handleClosedRoutes";
 
@@ -33,21 +34,19 @@ const handleClosedRoutes = new HandleClosedRoutes(window.location.pathname);
 
   async function loginUser(form, userData) {
     const { email, password } = userData;
-    const userExistsId = 'exists';
     const wrongPswdId = 'wrong-password';
-    removeNotification(userExistsId);
     removeNotification(wrongPswdId);
-    const response = await fetch('http://localhost:4000/users');
-    const users = await response.json();
-    const userFromDb = users.find(el => el.email === email);
-    if (!userFromDb) {
-      renderErrorNotification('User not found', userExistsId, form);
-    } else if (userFromDb.password !== password) {
-      renderErrorNotification('Email or password incorrect', wrongPswdId, form);
-    } else {
-      const userDataStringified = JSON.stringify(userFromDb);
-      localStorage.setItem('expenseUser', userDataStringified);
-      window.location = '/index.html';
+    try {
+      const { data } = await api.post('/signin', {
+        ...userData
+      });
+      const { token } = data;
+      localStorage.setItem('expense', token);
+    } catch (e) {
+      console.error(e);
+      const { data } = e.response;
+      const errText = Object.values(data)[0];
+      renderErrorNotification(errText, wrongPswdId, form);
     }
   }
 

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import register from '../styles/pages/register.scss';
+import api from './utils/axios';
 import FormValidator from './utils/formValidator';
 import axios from 'axios';
 
@@ -58,7 +59,7 @@ import axios from 'axios';
   async function createUser(form, data = {}) {
     handleNotifications.clearNotifications();
     try {
-      await axios.post('http://localhost:5050/register', {
+      await api.post('/register', {
         ...data
       });
       clearForm();
