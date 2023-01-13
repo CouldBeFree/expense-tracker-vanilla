@@ -33,7 +33,6 @@ const handleClosedRoutes = new HandleClosedRoutes(window.location.pathname);
   }
 
   async function loginUser(form, userData) {
-    const { email, password } = userData;
     const wrongPswdId = 'wrong-password';
     removeNotification(wrongPswdId);
     try {
@@ -42,6 +41,7 @@ const handleClosedRoutes = new HandleClosedRoutes(window.location.pathname);
       });
       const { token } = data;
       localStorage.setItem('expense', token);
+      window.location = '/index.html';
     } catch (e) {
       console.error(e);
       const { data } = e.response;

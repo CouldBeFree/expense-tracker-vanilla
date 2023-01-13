@@ -12,7 +12,7 @@ class HandleClosedRoutes {
   }
 
   get isUserLoggedIn() {
-    return !!localStorage.getItem('expenseUser');
+    return !!localStorage.getItem('expense');
   }
 
   handlePublic() {

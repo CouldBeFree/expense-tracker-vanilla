@@ -2,9 +2,12 @@
 import register from '../styles/pages/register.scss';
 import api from './utils/axios';
 import FormValidator from './utils/formValidator';
-import axios from 'axios';
+import HandleClosedRoutes from "./utils/handleClosedRoutes";
+
+const handleClosedRoutes = new HandleClosedRoutes(window.location.pathname);
 
 (function () {
+  handleClosedRoutes.handlePublic();
   const form = document.querySelector('#form');
   const register = document.querySelector('#register');
 
