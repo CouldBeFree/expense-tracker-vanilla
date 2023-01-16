@@ -12,6 +12,7 @@ import api from './utils/axios';
       this.editModal = document.querySelector('#edit-modal');
       this.addNewCategory = document.querySelector('#add-category');
       this.categoryTarget = document.querySelector('#category-target');
+      this.categoryForm = document.querySelector('#category-form');
     }
 
     addEventHandler() {
@@ -39,6 +40,10 @@ import api from './utils/axios';
       });
       this.addNewCategory.addEventListener('click', () => {
         this.editModal.classList.add('is-active');
+      });
+      this.categoryForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.saveCategory();
       });
     }
 
@@ -70,7 +75,7 @@ import api from './utils/axios';
       removeButton.classList.add('common-button', 'remove');
       const editButton = document.createElement('button');
       span.appendChild(editIcon);
-      console.log(editIcon);
+      // console.log(editIcon);
       editButton.classList.add('common-button', 'edit');
       const editSpan = span.appendChild(editIcon);
       const removeSpan = span.appendChild(removeIcon);
@@ -78,8 +83,36 @@ import api from './utils/axios';
       editButton.appendChild(editSpan);
       td.appendChild(removeButton);
       td.appendChild(editButton);
-      console.log(td);
+      // console.log(td);
       return td;
+    }
+
+    saveCategory() {
+      const input = document.querySelector('#category-name');
+      let inputVal = input.value;
+      let type = null;
+      if (input.classList.contains('error')) input.classList.remove('error');
+      if (!inputVal) {
+        input.classList.add('error');
+      }
+      const radio = document.querySelectorAll('#category-form [type="radio"]');
+      if (radio) {
+        const arType = Array.from(radio);
+        const checkedRadioBtn = arType.find(el => el.checked === true);
+        if (checkedRadioBtn) {
+          const { value } = checkedRadioBtn;
+          type = value;
+        }
+      }
+      api.post('/create-category', {
+        name: inputVal,
+        type: type
+      })
+          .then((res) => {
+            input.value = '';
+            this.editModal.classList.remove('is-active');
+            this.renderRow(res);
+          })
     }
 
     getCategories() {

@@ -88,70 +88,6 @@
                               </button>
                            </td>
                         </tr>
-                        <tr>
-                           <td>Health Care</td>
-                           <td>Expense</td>
-                           <td>
-                              <button class="common-button remove">
-                                 <span class="icon is-small">
-                                    <i class="fa-solid fa-trash"></i>
-                                 </span>
-                              </button>
-                              <button class="common-button edit">
-                                 <span class="icon is-small">
-                                    <i class="fa-solid fa-pen"></i>
-                                 </span>
-                              </button>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Open Balance</td>
-                           <td>Income</td>
-                           <td>
-                              <button class="common-button remove">
-                                 <span class="icon is-small">
-                                    <i class="fa-solid fa-trash"></i>
-                                 </span>
-                              </button>
-                              <button class="common-button edit">
-                                 <span class="icon is-small">
-                                    <i class="fa-solid fa-pen"></i>
-                                 </span>
-                              </button>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Education</td>
-                           <td>Expense</td>
-                           <td>
-                              <button class="common-button remove">
-                                 <span class="icon is-small">
-                                    <i class="fa-solid fa-trash"></i>
-                                 </span>
-                              </button>
-                              <button class="common-button edit">
-                                 <span class="icon is-small">
-                                    <i class="fa-solid fa-pen"></i>
-                                 </span>
-                              </button>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>Commission</td>
-                           <td>Income</td>
-                           <td>
-                              <button class="common-button remove">
-                                 <span class="icon is-small">
-                                    <i class="fa-solid fa-trash"></i>
-                                 </span>
-                              </button>
-                              <button class="common-button edit">
-                                 <span class="icon is-small">
-                                    <i class="fa-solid fa-pen"></i>
-                                 </span>
-                              </button>
-                           </td>
-                        </tr>
                      </tbody>
                   </table>
                </div>
@@ -182,27 +118,29 @@
             <p class="modal-card-title">Are you sure you want to remove?</p>
             <button class="delete" aria-label="close"></button>
          </header>
-         <section class="modal-card-body">
-            <p>
-               <input class="input" type="text" placeholder="Text input" value="Grocery">
-            </p>
-            <p class="mt-3">
+         <form id="category-form">
+            <section class="modal-card-body">
+               <p>
+                  <input class="input" id="category-name" type="text" placeholder="Enter category name">
+               </p>
+               <p class="mt-3">
                <div class="control">
                   <label class="radio">
-                     <input type="radio" name="type">
+                     <input type="radio" name="type" checked value="expense">
                      Expense
                   </label>
                   <label class="radio">
-                     <input type="radio" name="type" checked>
+                     <input type="radio" name="type" value="income">
                      Income
                   </label>
                </div>
-            </p>
-         </section>
-         <footer class="modal-card-foot">
-            <button class="button is-success">Save</button>
-            <button class="button">Cancel</button>
-         </footer>
+               </p>
+            </section>
+            <footer class="modal-card-foot">
+               <button class="button is-success" type="submit">Save</button>
+               <button class="button">Cancel</button>
+            </footer>
+         </form>
       </div>
    </div>
    <div id="add-modal" class="modal">
@@ -230,8 +168,8 @@
             </p>
          </section>
          <footer class="modal-card-foot">
-            <button class="button is-success">Save</button>
-            <button class="button">Cancel</button>
+            <button class="button is-success" type="submit">Save</button>
+            <button class="button" type="button">Cancel</button>
          </footer>
       </div>
    </div>
