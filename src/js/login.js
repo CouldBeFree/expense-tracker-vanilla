@@ -36,10 +36,10 @@ const handleClosedRoutes = new HandleClosedRoutes(window.location.pathname);
     const wrongPswdId = 'wrong-password';
     removeNotification(wrongPswdId);
     try {
-      const { data } = await api.post('/signin', {
+      const response = await api.post('/signin', {
         ...userData
       });
-      const { token } = data;
+      const { token } = response;
       localStorage.setItem('expense', token);
       window.location = '/index.html';
     } catch (e) {
