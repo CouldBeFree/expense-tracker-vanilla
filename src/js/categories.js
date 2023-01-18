@@ -1,5 +1,6 @@
 import categories from '../styles/pages/categories.scss';
 import api from './utils/axios';
+import { categoryCRUDTypes } from './types';
 
 (function () {
   class CategoriesHandler {
@@ -13,9 +14,48 @@ import api from './utils/axios';
       this.addNewCategory = document.querySelector('#add-category');
       this.categoryTarget = document.querySelector('#category-target');
       this.categoryForm = document.querySelector('#category-form');
+      // TODO clear remove id when close the modal
+      this.editOrRemoveId = null;
+      this.currentCRUDType = categoryCRUDTypes['remove'];
+      this.types = categoryCRUDTypes;
+    }
+
+    clearCategoriesInUI() {
+      while (this.categoryTarget.firstChild) {
+        this.categoryTarget.removeChild(this.categoryTarget.lastChild);
+      }
+    }
+
+    removeCategory(btn) {
+      btn.setAttribute('disabled', true);
+      api.delete(`/category/${this.editOrRemoveId}`)
+          .then(() => {
+            btn.removeAttribute('disabled');
+            this.removePopup.classList.remove('is-active');
+            this.getCategories();
+          })
+          .catch(e => {
+            btn.removeAttribute('disabled');
+            console.error(e);
+          })
     }
 
     addEventHandler() {
+      this.removePopup.addEventListener('click', (e) => {
+        if (e.target.dataset.action) {
+          switch(e.target.dataset.action) {
+            case 'remove':
+              this.removeCategory(e.target);
+              this.removeCategory();
+              break;
+            case 'cancel':
+              console.log('cancel');
+              break;
+            default:
+              return false;
+          }
+        }
+      });
       this.removeButtons.forEach(el => {
         el.addEventListener('click', () => {
           this.removePopup.classList.add('is-active');
@@ -53,6 +93,22 @@ import api from './utils/axios';
       }
       const tr = document.createElement('tr');
       tr.setAttribute('data-id', data.id);
+      tr.addEventListener('click', (e) => {
+        if (e.target.dataset.action) {
+          this.editOrRemoveId = e.target.parentNode.parentNode.dataset.id
+          this.currentCRUDType = this.types[e.target.dataset.action];
+          switch(e.target.dataset.action) {
+            case 'remove':
+              this.removePopup.classList.add('is-active');
+              return;
+            case 'edit':
+              this.editModal.classList.add('is-active');
+              return;
+            default:
+              return false;
+          }
+        }
+      })
       const categoryHolder = newTd();
       const typeHolder = newTd();
       categoryHolder.textContent = data.name;
@@ -81,6 +137,10 @@ import api from './utils/axios';
       const removeSpan = span.appendChild(removeIcon);
       removeButton.appendChild(removeSpan);
       editButton.appendChild(editSpan);
+      editButton.textContent = 'Edit';
+      removeButton.textContent = 'Remove';
+      editButton.setAttribute('data-action', 'edit');
+      removeButton.setAttribute('data-action', 'remove');
       td.appendChild(removeButton);
       td.appendChild(editButton);
       // console.log(td);
@@ -115,10 +175,11 @@ import api from './utils/axios';
           })
     }
 
-    getCategories() {
+    getCategories(initial = false) {
       api.get('/categories')
           .then(res => {
             // this.renderActionsBlock();
+            if (!initial) this.clearCategoriesInUI();
             res.forEach((category) => {
               this.renderRow(category);
             })
@@ -128,7 +189,7 @@ import api from './utils/axios';
 
     init() {
       this.addEventHandler();
-      this.getCategories();
+      this.getCategories(true);
     }
   }
 

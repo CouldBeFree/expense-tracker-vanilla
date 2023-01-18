@@ -106,8 +106,8 @@
             <button class="delete" aria-label="close"></button>
          </header>
          <footer class="modal-card-foot">
-            <button class="button is-success">Yes</button>
-            <button class="button">Cancel</button>
+            <button class="button is-success" data-action="remove">Yes</button>
+            <button class="button" data-action="cancel">Cancel</button>
          </footer>
       </div>
    </div>
@@ -115,7 +115,7 @@
       <div class="modal-background"></div>
       <div class="modal-card">
          <header class="modal-card-head">
-            <p class="modal-card-title">Are you sure you want to remove?</p>
+            <p class="modal-card-title">Edit | Crete New</p>
             <button class="delete" aria-label="close"></button>
          </header>
          <form id="category-form">
@@ -137,8 +137,8 @@
                </p>
             </section>
             <footer class="modal-card-foot">
-               <button class="button is-success" type="submit">Save</button>
-               <button class="button">Cancel</button>
+               <button class="button is-success" type="submit" data-save>Save</button>
+               <button class="button" data-cancel>Cancel</button>
             </footer>
          </form>
       </div>
@@ -147,7 +147,7 @@
       <div class="modal-background"></div>
       <div class="modal-card">
          <header class="modal-card-head">
-            <p class="modal-card-title">Are you sure you want to remove?</p>
+            <p class="modal-card-title">Edit category</p>
             <button class="delete" aria-label="close"></button>
          </header>
          <section class="modal-card-body">
